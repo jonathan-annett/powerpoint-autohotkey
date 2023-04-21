@@ -32,4 +32,4 @@ Scroll Notes with Keyboard
 ===
 Both scripts allow you to scroll the notes view using the keyboard:
 
-![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/2d8a0b8ad5f11a60e1561ac38a9c35616512d055/key%20scroll.png)
+![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/0df841ba6b2bcd6a340976e2629aac80e9a7424d/key%20scroll.png)
