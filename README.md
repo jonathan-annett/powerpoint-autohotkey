@@ -28,8 +28,8 @@ PPT - Notes Scroller.ahk
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/24269185b5a01e2eecdb6220af85b3fc9cd09f08/Notes%20Scroller.png)
 
 
-Scroll Notes with Keyboard
+Keyboard Helpers
 ===
-Both scripts allow you to scroll the notes view using the keyboard:
+Both scripts allow you to start and stop the presentation, and scroll the notes view using the keyboard
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/0df841ba6b2bcd6a340976e2629aac80e9a7424d/key%20scroll.png)
