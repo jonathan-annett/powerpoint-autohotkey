@@ -17,7 +17,7 @@
 ; Numpad [-] Scroll the notes view up
 ; Numpad [+] Scroll the notes view down
 
-; the F1 key was chosen for stop as it is the closest to the escape key, since escape is basicaly ignored, the
+; the F1 key was chosen for stop as it is the closest to the escape key, since escape is ignored
 
 #Requires AutoHotkey v2.0
 
@@ -54,27 +54,8 @@ F1:: {
 
 }
 
-F2:: {
-    ; operator helper key - F2 starts the presentation, or jumps to it if it is in the background
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "{F5}"
-    }
-}
-
-F3:: {
-    ; operator helper key - F3 starts the presentation on the current slide
-    ; this only works if slideshow is not currently running (if it is, it jumps to whatever slide is already being shown)
-
-    here := WinActive
-
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "+{F5}"
-    }
-}
+F2::F5
+F3::+F5
 
 
 F5:: {
@@ -109,8 +90,6 @@ Esc:: {
     ; when in the editor, the start/stop button (or escape/f5) will always force the slide show to the foreground
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
         WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "{F5}"
     }
 }
 
