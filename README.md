@@ -16,4 +16,8 @@ PPT - Mute Logi Black.ahk
 PPT - Notes Scroller.ahk
 ===
 
-![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/85b8f4bff0fe3a92fbdd3f3134815017e86d9561/Ignore%20Blackout.png)
+![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/24269185b5a01e2eecdb6220af85b3fc9cd09f08/Notes%20Scroller.png)
+
+Note: Both scripts allow you to scroll the notes view using the keyboard:
+
+![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/24269185b5a01e2eecdb6220af85b3fc9cd09f08/Notes%20Scroller.png)
