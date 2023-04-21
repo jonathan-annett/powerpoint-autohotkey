@@ -1,8 +1,17 @@
 # powerpoint-autohotkey
 
-helper keys for using powerpoint with logitech style clickers
+Helper keys for using powerpoint with logitech style clickers
 
 this repository contains two scripts for use with AutoHotkey, which you can download and installed from [www.autohotkey.com](https://www.autohotkey.com/)
+
+Background
+---
+
+The start/stop key in a logitech remote alternates between Escape and f5.
+
+The blackout key (to the right of the start/stop key) sends the OEM_PERIOD or virtualKey 0xBE (the "." key)
+
+We trap these keys and replace them or ignore them to provide a more stable experience for the presenter.
 
 
 PPT - Mute Logi Black.ahk
@@ -20,7 +29,7 @@ PPT - Notes Scroller.ahk
 
 
 Scroll Notes with Keyboard
----
+===
 Both scripts allow you to scroll the notes view using the keyboard:
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/2d8a0b8ad5f11a60e1561ac38a9c35616512d055/key%20scroll.png)
