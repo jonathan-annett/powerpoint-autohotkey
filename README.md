@@ -8,7 +8,7 @@ this repository contains two scripts for use with AutoHotkey, which you can down
 PPT - Mute Logi Black.ahk
 ===
 
-![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/85b8f4bff0fe3a92fbdd3f3134815017e86d9561/Ignore%20Blackout.png)
+![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/c8f7bb48a84fda4a0b1bf49dbfd33902ac61cb8a/Ignore%20Blackout.png)
 
 
 
