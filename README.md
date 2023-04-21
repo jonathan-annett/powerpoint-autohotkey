@@ -6,7 +6,10 @@ this repository contains two scripts for use with AutoHotkey, which you can down
 
 
 
-[PPT - Notes Scroller.ahk](https://github.com/jonathan-annett/powerpoint-autohotkey/PPT%20-%20Notes%20Scroller.ahk)
+
+
+
+PPT - Notes Scroller.ahk
 ===
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/85b8f4bff0fe3a92fbdd3f3134815017e86d9561/Ignore%20Blackout.png)
