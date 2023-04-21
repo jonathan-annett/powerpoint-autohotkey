@@ -19,7 +19,7 @@
 ; the start/stop key in a logitech remote alternates between escape and f5.
 ;             the blackout key (to the right of the start/stop) sends the OEM_PERIOD or virtualKey 0xBE (the "." key)
 ; we trap these keys and replace them with ctrl-up (in the case of f5 or escape), and ctrl-down
-; this is used by powerpoint to scrol the notes view
+; this is used by powerpoint to scroll the notes view
 
 ; so the operator has a way to stop and start the slide deck (besides using the mouse)
 ; we provide:  F2 to start the slideshow (or bring it to the foreground)
