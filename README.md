@@ -7,9 +7,9 @@ This repository contains two scripts for use with AutoHotkey, which you can down
 Background
 ---
 
-The start/stop key in a logitech remote alternates between Escape and f5.
+The start/stop key in a logitech remote alternates between ```Esc``` and ```F5```.
 
-The blackout key (to the right of the start/stop key) sends the OEM_PERIOD or virtualKey 0xBE (the "." key)
+The blackout key (to the right of the start/stop key) sends the OEM_PERIOD key ( virtualKey 0xBE, aka the "." key)
 
 We trap these keys and replace them or ignore them to provide a more stable experience for the presenter.
 
