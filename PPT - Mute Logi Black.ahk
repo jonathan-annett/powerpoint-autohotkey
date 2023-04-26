@@ -67,26 +67,6 @@ F5:: {
     }
 }
 
-/*
-
-PgUp:: {
-    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    }
-    Send "{PgUp}"
-}
-
-PgDn:: {
-    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-
-    }
-    Send "{PgDn}"
-}
-
-*/
 Esc:: {
 
     ; when in the editor, the start/stop button (or escape/f5) will always force the slide show to the foreground

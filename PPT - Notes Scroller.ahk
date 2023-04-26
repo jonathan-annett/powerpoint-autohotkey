@@ -63,39 +63,7 @@ F1:: {
 
 F2::F5
 F3::+F5
-/*
-PgUp:: {
-    ; if presenter clicks back when operator is in editor, jump to slideshown and select previous slide
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    }
-    Send "{PgUp}"
-}
 
-PgDn:: {
-    ; if presenter clicks next when operator is in editor, jump to slideshown and select next slide
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    }
-    Send "{PgDn}"
-}
-
-Esc:: {
-    ; scroll notes up
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-        Send "^{Up}"
-    }
-}
-
-F5:: {
-    ; scroll notes down
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-        Send "^{Up}"
-    }
-}
-*/
 +^Q:: {
     MsgBox "exiting PPT - Notes Scroller"
     ExitApp 0
