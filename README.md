@@ -14,7 +14,7 @@ The blackout key (to the right of the start/stop key) sends the OEM_PERIOD key (
 We trap these keys and replace them or ignore them to provide a more stable experience for the presenter.
 
 
-PPT - Disable Logitech Blackout and Escape.ahk &PPT - Disable Logitech Blackout Key
+PPT - Disable Logitech Blackout and Escape.ahk & PPT - Disable Logitech Blackout Key
 ===
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/c8f7bb48a84fda4a0b1bf49dbfd33902ac61cb8a/Ignore%20Blackout.png)
