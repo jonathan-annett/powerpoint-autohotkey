@@ -54,25 +54,6 @@ F2::F5
 F3::+F5
 
 
-F5:: {
-    ; operator helper key - F5 starts the presentation, or jumps to it if it is in the background
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "{F5}"
-    }
-}
-
-Esc:: {
-
-    ; when in the editor, the start/stop button (or escape/f5) will always force the slide show to the foreground
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "{F5}"
-    }
-}
-
 +^Q:: {
     MsgBox "exiting PPT - Mute Logi Black"
     ; stop using this script

@@ -72,8 +72,8 @@ Esc:: {
     ; when in the editor, the start/stop button (or escape/f5) will always force the slide show to the foreground
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
         WinActivate ; Use the window found by WinExist.
-    } else {
-        Send "{F5}"
+   ; } else {
+      ;  Send "{F5}"
     }
 }
 
