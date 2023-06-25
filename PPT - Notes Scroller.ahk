@@ -4,8 +4,8 @@
 ; logitech keys:
 ; [ < ] previous slide (normal behaviour)
 ; [ > ] next slide (normal behaviour)
-; [ = ] scroll notes up (this is the the button below the [ < ])
-; [ o ] scroll notes down (this is the the button below the [ > ])
+; [ = ] scroll notes up (this is the button below the [ < ])
+; [ o ] scroll notes down (this is the button below the [ > ])
 
 
 ; operator helper keys:

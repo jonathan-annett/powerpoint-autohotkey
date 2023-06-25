@@ -6,8 +6,8 @@
 ; logitech clicker keys:
 ; [ < ] previous slide (normal behaviour)
 ; [ > ] next slide (normal behaviour)
-; [ = ] ignored when in slide show  (this is the the button below the [ < ])
-; [ o ] ignored when in slide show  (this is the the button below the [ > ])
+; [ = ] ignored when in slide show  (this is the button below the [ < ])
+; [ o ] ignored when in slide show  (this is the button below the [ > ])
 
 
 ; operator helper keys:
