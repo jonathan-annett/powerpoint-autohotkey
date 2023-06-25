@@ -14,12 +14,12 @@ The blackout key (to the right of the start/stop key) sends the OEM_PERIOD key (
 We trap these keys and replace them or ignore them to provide a more stable experience for the presenter.
 
 
-PPT - Mute Logi Black.ahk
+PPT - Disable Logitech Blackout and Escape.ahk &PPT - Disable Logitech Blackout Key
 ===
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/c8f7bb48a84fda4a0b1bf49dbfd33902ac61cb8a/Ignore%20Blackout.png)
 
-
+* `PPT - Disable Logitech Blackout Key.ahk` may require the "Start Slideshow" key to be pressed twice, as the default behaviour for the clicker is to alternate between F5 and Escape
 
 
 PPT - Notes Scroller.ahk
