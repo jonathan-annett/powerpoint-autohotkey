@@ -2,7 +2,7 @@
 
 Helper keys for using powerpoint with logitech style clickers
 
-This repository contains two scripts for use with AutoHotkey, which you can download and install by visiting [www.autohotkey.com](https://www.autohotkey.com/)
+This repository contains four scripts for use with AutoHotkey, which you can download and install by visiting [www.autohotkey.com](https://www.autohotkey.com/)
 
 Background
 ---
@@ -28,8 +28,15 @@ PPT - Notes Scroller.ahk
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/24269185b5a01e2eecdb6220af85b3fc9cd09f08/Notes%20Scroller.png)
 
 
+PPT - Logitech Toggle Laser.ahk
+===
+
+Replaces the OEM_PERIOD key (blackout) with Control L when in PowerPoint.
+
+This toggles the laser pointer in PowerPoint
+
 Keyboard Helpers
 ===
-Both scripts allow you to start and stop the presentation, and scroll the notes view using the keyboard
+All scripts allow you to start and stop the presentation, and scroll the notes view using the keyboard
 
 ![image](https://github.com/jonathan-annett/powerpoint-autohotkey/blob/0df841ba6b2bcd6a340976e2629aac80e9a7424d/key%20scroll.png)
