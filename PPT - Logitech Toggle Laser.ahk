@@ -23,10 +23,7 @@
 #HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
 ; keys for when a powerpoint slideshow is in foreground
 F1::Esc ; operator helper key - use F1 instead of escape (also mutes the F1 global help window which is "unhelpful")
-vkBE:: {
-    Send "^L"
-    return ; 
-}
+vkBE::^l
 
 NumpadSub::^Up   ; operator helper - numpad Minus = scroll notes up
 NumpadAdd::^Down ; operator helper - numpad Plus  = scroll notes down
