@@ -27,6 +27,10 @@ vkBE:: {
     return ; fix issue with logitech blackout key - ignore it
 }
 
+b:: {
+    return ; fix issue with logitech blackout key - ignore it
+}
+
 NumpadSub::^Up   ; operator helper - numpad Minus = scroll notes up
 NumpadAdd::^Down ; operator helper - numpad Plus  = scroll notes down
 
