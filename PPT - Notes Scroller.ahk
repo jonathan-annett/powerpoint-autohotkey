@@ -113,6 +113,6 @@ PgDn:: {
 SetPos() {
     WinGetPos &X, &Y, &W, &H, "A"
     CoordMode "Mouse"
-    MouseMove  X + W - 20, Y+20  , 0
+    MouseMove  (X + W - 20), (Y + H-20)  , 0
     Click 
  }
