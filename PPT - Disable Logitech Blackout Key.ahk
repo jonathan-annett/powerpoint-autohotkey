@@ -22,7 +22,12 @@
 
 #HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
 ; keys for when a powerpoint slideshow is in foreground
-F1::Esc ; operator helper key - use F1 instead of escape (also mutes the F1 global help window which is "unhelpful")
+
+F1:: {
+    ; operator helper key - use F1 instead of escape (also mutes the F1 global help window which is "unhelpful")
+    SendCustom 0,"{Esc}"
+}
+
 vkBE:: {
     return ; fix issue with logitech blackout key - ignore it
 }
@@ -31,17 +36,35 @@ b:: {
     return ; fix issue with logitech blackout key - ignore it
 }
 
-NumpadSub::^Up   ; operator helper - numpad Minus = scroll notes up
-NumpadAdd::^Down ; operator helper - numpad Plus  = scroll notes down
+NumpadSub::{
+    ; operator helper - numpad Minus = scroll notes up
+    SendCustom 0,"^{Up}"
+}
+NumpadAdd::{
+    ; operator helper - numpad Minus = scroll notes down
+    SendCustom 0,"^{Down}"
+}
+
+Space:: {
+    SendCustom 0,"{Space}"
+}
 
 PgUp:: {
-    Send "{PgUp}"
+    SendCustom 0,"{PgUp}"
 }
 
 PgDn:: {
-    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
-    Send "{PgDn}"
+    SendCustom 0, "{PgDn}"
 }
+
+Right:: {
+    SendCustom 0,"{Right}"
+}
+
+Left:: {
+    SendCustom 0, "{Left}"
+}
+
 +^Q:: {
     ; stop using this script
     ExitApp 0
@@ -84,24 +107,32 @@ F3::+F5
 PgUp:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-        SetPos()
+        WinActivate ; Use the window found by WinExist.        
+        SendCustom 1,"{PgUp}"
+    } else {
+        Send "{PgUp}"
     }
-    Send "{PgUp}"
 }
 
 PgDn:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
         WinActivate ; Use the window found by WinExist.
-        SetPos()
+        SendCustom 1, "{PgDn}"
+    } else {
+        Send "{PgDn}"
     }
-    Send "{PgDn}"
 }
 
-SetPos() {
+SendCustom(force,key) {
+
     WinGetPos &X, &Y, &W, &H, "A"
-    CoordMode "Mouse"
+    CoordMode "Mouse"   
+    MouseGetPos &XX, &YY
     MouseMove  (X + W - 20), (Y + H-20)  , 0
-    Click 
- }
+    Click  
+    if ( force==0) {
+        MouseMove XX,YY
+    }
+    Send key
+}
