@@ -39,6 +39,33 @@ NumpadAdd::{
     SendCustom 0,"^{Down}"
 }
 
+Home:: {
+    SendCustom 0,"{Home}"
+}
+
+End:: {
+    SendCustom 0,"{End}"
+}
+
+Space:: {
+    SendCustom 0,"{Space}"
+}
+
+PgUp:: {
+    SendCustom 0,"{PgUp}"
+}
+
+PgDn:: {
+    SendCustom 0, "{PgDn}"
+}
+
+Right:: {
+    SendCustom 0,"{Right}"
+}
+
+Left:: {
+    SendCustom 0, "{Left}"
+}
 
 
 +^Q:: {

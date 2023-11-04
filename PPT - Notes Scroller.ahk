@@ -46,6 +46,14 @@ NumpadAdd::{
     SendCustom 0,"^{Down}"
 }
 
+Home:: {
+    SendCustom 0,"{Home}"
+}
+
+End:: {
+    SendCustom 0,"{End}"
+}
+
 Space:: {
     SendCustom 0,"{Space}"
 }

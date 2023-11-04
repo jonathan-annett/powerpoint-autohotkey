@@ -44,6 +44,14 @@ NumpadAdd::{
     ExitApp 0
 }
 
+Home:: {
+    SendCustom 0,"{Home}"
+}
+
+End:: {
+    SendCustom 0,"{End}"
+}
+
 Space:: {
     SendCustom 0,"{Space}"
 }
@@ -63,6 +71,7 @@ Right:: {
 Left:: {
     SendCustom 0, "{Left}"
 }
+
 
 #HotIf
 
