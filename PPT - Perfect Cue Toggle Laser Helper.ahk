@@ -56,6 +56,10 @@ Space:: {
     SendCustom 0,"{Space}"
 }
 
+Enter:: {
+    SendCustom 0,"{Enter}"
+}
+
 PgUp:: {
     SendCustom 0,"{PgUp}"
 }
@@ -72,6 +76,9 @@ Left:: {
     SendCustom 0, "{Left}"
 }
 
+/:: {
+    SendCustom 1, "/"
+}
 
 #HotIf
 
@@ -128,7 +135,6 @@ Left:: {
     }
 }
 
-
 SendCustom(force,key) {
 
     WinGetPos &X, &Y, &W, &H, "A"
@@ -138,6 +144,10 @@ SendCustom(force,key) {
     Click  
     if ( force==0) {
         MouseMove XX,YY
+    } else {
+        Sleep 10
+        Click
     }
+
     Send key
 }
