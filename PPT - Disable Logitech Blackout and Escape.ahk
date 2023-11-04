@@ -34,6 +34,14 @@ vkBE:: {
 NumpadSub::^Up   ; operator helper - numpad Minus = scroll notes up
 NumpadAdd::^Down ; operator helper - numpad Plus  = scroll notes down
 
+PgUp:: {
+    Send "{PgUp}"
+}
+
+PgDn:: {
+    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
+    Send "{PgDn}"
+}
 
 +^Q:: {
     ; stop using this script
@@ -93,11 +101,11 @@ Esc:: {
 }
 
 
-
 PgUp:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
         WinActivate ; Use the window found by WinExist.
+        SetPos()
     }
     Send "{PgUp}"
 }
@@ -106,7 +114,14 @@ PgDn:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
         WinActivate ; Use the window found by WinExist.
-
+        SetPos()
     }
     Send "{PgDn}"
 }
+
+SetPos() {
+    WinGetPos &X, &Y, &W, &H, "A"
+    CoordMode "Mouse"
+    MouseMove  X + W - 20, Y+20  , 0
+    Click 
+ }

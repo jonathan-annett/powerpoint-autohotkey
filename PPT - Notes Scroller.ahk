@@ -76,22 +76,6 @@ F3::+F5
     ExitApp 0
 }
 
-PgUp:: {
-    ; if presenter clicks back when operator is in editor, jump to slideshown and select previous slide
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    }
-    Send "{PgUp}"
-}
-
-PgDn:: {
-    ; if presenter clicks next when operator is in editor, jump to slideshown and select next slide
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-    }
-    Send "{PgDn}"
-}
-
 Esc:: {
     ; scroll notes up
     if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
@@ -107,3 +91,28 @@ F5:: {
         Send "^{Up}"
     }
 }
+
+PgUp:: {
+    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+        WinActivate ; Use the window found by WinExist.
+        SetPos()
+    }
+    Send "{PgUp}"
+}
+
+PgDn:: {
+    ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+        WinActivate ; Use the window found by WinExist.
+        SetPos()
+    }
+    Send "{PgDn}"
+}
+
+SetPos() {
+    WinGetPos &X, &Y, &W, &H, "A"
+    CoordMode "Mouse"
+    MouseMove  X + W - 20, Y+20  , 0
+    Click 
+ }
