@@ -20,7 +20,7 @@
 
 #SingleInstance Force ; if someone starts the script twice, just replace it in memory
 
-#HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
+#HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent')
 ; keys for when a powerpoint slideshow is in foreground
 F1:: {
     ; operator helper key - use F1 instead of escape (also mutes the F1 global help window which is "unhelpful")
@@ -39,10 +39,6 @@ NumpadAdd::{
     SendCustom 0,"^{Down}"
 }
 
-+^Q:: {
-    ; stop using this script
-    ExitApp 0
-}
 
 Home:: {
     SendCustom 0,"{Home}"
@@ -80,6 +76,45 @@ Left:: {
     SendCustom 1, "/"
 }
 
++^Q:: {
+    ; stop using this script
+    ExitApp 0
+}
+
+#HotIf
+
+#HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
+; keys for when a powerpoint slideshow is in foreground
+F1:: {
+    ; operator helper key - use F1 instead of escape (also mutes the F1 global help window which is "unhelpful")
+    Send "{Esc}"
+}
+vkBE:: {
+    Send "^l"
+}
+
+NumpadSub::{
+    ; operator helper - numpad Minus = scroll notes up
+    Send "^{Up}"
+}
+NumpadAdd::{
+    ; operator helper - numpad Minus = scroll notes down
+    Send "^{Down}"
+}
+
+/:: {
+    WinGetPos &X, &Y, &W, &H, "A"
+    CoordMode "Mouse"   
+    MouseMove  (X + W - 20), (Y + H-20)  , 0
+}
+
+
++^Q:: {
+    ; stop using this script
+    ExitApp 0
+}
+
+
 #HotIf
 
 
@@ -114,24 +149,29 @@ F3::+F5
 }
 
 
-Right:: {
+Left:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
-        WinActivate ; Use the window found by WinExist.
-        
-        SendCustom 1,"{Right}"
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') {
+        WinActivate ; Use the window found by WinExist.        
+        SendCustom 1,"{Left}"
     } else {
-        Send "{Right}"
+        if  WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+            WinActivate ; Use the window found by WinExist.        
+        } 
+        Send "{Left}"
     }
 }
 
-Left:: {
+Right:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') {
         WinActivate ; Use the window found by WinExist.
-        SendCustom 1, "{Left}"
+        SendCustom 1, "{Right}"
     } else {
-        Send "{Left}"
+        if WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+            WinActivate ; Use the window found by WinExist.
+        }
+        Send "{Right}"
     }
 }
 

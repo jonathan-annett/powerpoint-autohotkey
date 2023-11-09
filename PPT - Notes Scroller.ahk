@@ -30,7 +30,7 @@
 
 #SingleInstance Force
 
-#HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
+#HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PodiumParent')
 ; keys for when a powerpoint slideshow is in foreground
 Esc::^Up ;
 F5::^Up ;
@@ -90,6 +90,36 @@ Left:: {
 
 #HotIf
 
+#HotIf  WinActive('ahk_exe POWERPNT.EXE ahk_class screenClass')
+; keys for when a powerpoint slideshow is in foreground
+Esc::^Up ;
+F5::^Up ;
+F1::Esc ;
+vkBE::^Down ; replace logtech blackout with notes scroll down
+
+NumpadSub::{
+    ; operator helper - numpad Minus = scroll notes up
+    Send "^{Up}"
+}
+NumpadAdd::{
+    ; operator helper - numpad Minus = scroll notes down
+    Send "^{Down}"
+}
+
+
+/:: {
+    WinGetPos &X, &Y, &W, &H, "A"
+    CoordMode "Mouse"   
+    MouseMove  (X + W - 20), (Y + H-20)  , 0
+}
+
++^Q:: {
+    ; exit silently
+    ExitApp 0
+}
+
+
+#HotIf
 
 #HotIf WinActive('ahk_exe POWERPNT.EXE ahk_class PPTFrameClass')
 ; keys for when the powerpoint editor is in foreground
@@ -137,20 +167,26 @@ F5:: {
 
 PgUp:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks previous, jump back to the slideshow and go previous
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') {
         WinActivate ; Use the window found by WinExist.        
         SendCustom 1,"{PgUp}"
     } else {
+        if  WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+            WinActivate ; Use the window found by WinExist.        
+        } 
         Send "{PgUp}"
     }
 }
 
 PgDn:: {
     ; if the operator has tabbed to the powerpoint editor, and the presenter clicks next, jump back to the slideshow and go next
-    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') or WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+    if WinExist('ahk_exe POWERPNT.EXE ahk_class PodiumParent') {
         WinActivate ; Use the window found by WinExist.
         SendCustom 1, "{PgDn}"
     } else {
+        if WinExist('ahk_exe POWERPNT.EXE ahk_class screenClass') {
+            WinActivate ; Use the window found by WinExist.
+        }
         Send "{PgDn}"
     }
 }
