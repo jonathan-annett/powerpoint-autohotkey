@@ -1,12 +1,15 @@
 #Requires AutoHotkey v2.0
 
-global hotkeyMap := Map()  ; key -> { x, y, block }
+global hotkeyMap := Map()  ; key -> { x, y, block, moveOnly }
 
-; --- F9: Capture next key, allow through to app ---
-F9::captureHotkey(false)
+; --- F9: Capture + Click, allow through ---
+F9::captureHotkey(false, false)
 
-; --- Shift+F9: Capture next key, block from app ---
-+F9::captureHotkey(true)
+; --- Shift+F9: Capture + Click, block key ---
++F9::captureHotkey(true, false)
+
+; --- Ctrl+F9: Capture + Move only, allow through, print app name ---
+^F9::captureHotkey(false, true)
 
 ; --- Ctrl+Shift+F9: Clear all hotkeys ---
 ^+F9:: {
@@ -17,12 +20,13 @@ F9::captureHotkey(false)
     MsgBox "All hotkeys cleared."
 }
 
-; --- Capture Function ---
-captureHotkey(blockKey) {
+; --- Hotkey Capture Logic ---
+captureHotkey(blockKey, moveOnly) {
     MouseGetPos(&x, &y)
-    ToolTip (blockKey ? "Capture + Block" : "Capture + Allow") ": Press a key..."
+    label := moveOnly ? "Move Only" : (blockKey ? "Click + Block" : "Click + Allow")
+    ToolTip label ": Press a key to bind..."
     ih := InputHook("L1")
-    ih.KeyOpt("{All}", "E")  ; Eat the key press
+    ih.KeyOpt("{All}", "E")
     ih.Start()
     ih.Wait()
     ToolTip()
@@ -38,23 +42,33 @@ captureHotkey(blockKey) {
         return
     }
 
-    hotkeyMap[key] := { x: x, y: y, block: blockKey }
+    hotkeyMap[key] := { x: x, y: y, block: blockKey, moveOnly: moveOnly }
 
-    flags := blockKey ? "UseHook" : ""  ; UseHook blocks, default allows
+    flags := blockKey ? "UseHook" : ""
     HotIf (*) => true
-    Hotkey("*" key, (*) => clickSaved(key), flags)
+    Hotkey("*" key, (*) => handleHotkey(key), flags)
 
-    MsgBox "Assigned key '" key "' to click at (" x ", " y ")`n" (blockKey ? "Blocked from app." : "Allowed to app.")
+    MsgBox "Assigned key '" key "' to " (moveOnly ? "move mouse only" : "click") " at (" x ", " y ")" (blockKey ? " [Blocked]" : "")
 }
 
-; --- Click Handler ---
-clickSaved(key) {
+; --- Hotkey Handler ---
+handleHotkey(key) {
     if !hotkeyMap.Has(key)
         return
 
     MouseGetPos(&origX, &origY)
     pos := hotkeyMap[key]
+
     MouseMove(pos.x, pos.y, 0)
-    Click
-    MouseMove(origX, origY, 0)
+
+    if !pos.moveOnly {
+        Click
+        MouseMove(origX, origY, 0)
+    } else {
+        ; Show the active window for context
+        WinGetTitle(&title, "A")
+        WinGetClass(&cls, "A")
+        ToolTip "Moved mouse only. Active Window:`nTitle: " title "`nClass: " cls
+        SetTimer () => ToolTip(), -2000
+    }
 }
