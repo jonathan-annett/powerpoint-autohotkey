@@ -1,0 +1,60 @@
+#Requires AutoHotkey v2.0
+
+global hotkeyMap := Map()  ; key -> { x, y, block }
+
+; --- F9: Capture next key, allow through to app ---
+F9::captureHotkey(false)
+
+; --- Shift+F9: Capture next key, block from app ---
++F9::captureHotkey(true)
+
+; --- Ctrl+Shift+F9: Clear all hotkeys ---
+^+F9:: {
+    for key in hotkeyMap {
+        Hotkey("*" key, "Off")
+    }
+    hotkeyMap.Clear()
+    MsgBox "All hotkeys cleared."
+}
+
+; --- Capture Function ---
+captureHotkey(blockKey) {
+    MouseGetPos(&x, &y)
+    ToolTip (blockKey ? "Capture + Block" : "Capture + Allow") ": Press a key..."
+    ih := InputHook("L1")
+    ih.KeyOpt("{All}", "E")  ; Eat the key press
+    ih.Start()
+    ih.Wait()
+    ToolTip()
+
+    key := ih.EndKey
+    if !key {
+        MsgBox "No key was pressed."
+        return
+    }
+
+    if (hotkeyMap.Count >= 4) {
+        MsgBox "Only 4 hotkeys supported."
+        return
+    }
+
+    hotkeyMap[key] := { x: x, y: y, block: blockKey }
+
+    flags := blockKey ? "UseHook" : ""  ; UseHook blocks, default allows
+    HotIf (*) => true
+    Hotkey("*" key, (*) => clickSaved(key), flags)
+
+    MsgBox "Assigned key '" key "' to click at (" x ", " y ")`n" (blockKey ? "Blocked from app." : "Allowed to app.")
+}
+
+; --- Click Handler ---
+clickSaved(key) {
+    if !hotkeyMap.Has(key)
+        return
+
+    MouseGetPos(&origX, &origY)
+    pos := hotkeyMap[key]
+    MouseMove(pos.x, pos.y, 0)
+    Click
+    MouseMove(origX, origY, 0)
+}
